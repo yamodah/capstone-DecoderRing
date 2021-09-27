@@ -41,7 +41,7 @@ const polybiusModule = (function () {
     { letter: "Y", number: 45 },
     { letter: "Z", number: 55 },
   ];
-  
+
   function polybius(input, encode) {
     if (encode !== false) {
       function encoder(str) {

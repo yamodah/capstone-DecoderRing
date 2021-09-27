@@ -39,11 +39,11 @@ const caesarModule = (function () {
   function caesar(input, shift, encode = true) {
     const onlyLetters = /[A-Za-z]/gi;
 
-  //filter out bad shift values
-  if (!shift || shift === 0 || shift < -25 || shift > 25) {
-    return false;
-  } else if (!encode) {
-    function replacerDecodeFinder(macth) {
+    //filter out bad shift values
+    if (!shift || shift === 0 || shift < -25 || shift > 25) {
+      return false;
+    } else if (!encode) {
+      function replacerDecodeFinder(macth) {
         const letterObj = alphabet.filter((alphObj) => {
           if (alphObj.letter.toLowerCase() === macth.toLowerCase()) {
             return alphObj;
@@ -52,7 +52,7 @@ const caesarModule = (function () {
         // need a conditonal of sorts to catch the negative shift or incorporate that into the else if
 
         const newNumber = letterObj[0].number - shift;
-        
+
         if (newNumber >= 1 && newNumber <= 26) {
           const newLetter = alphabet.filter((alphObj) => {
             if (alphObj.number === newNumber) {
@@ -60,14 +60,14 @@ const caesarModule = (function () {
             }
           });
           return newLetter[0].letter;
-        }else if(newNumber > 26 ){
+        } else if (newNumber > 26) {
           const newLetter = alphabet.filter((alphObj) => {
-            if (alphObj.number === newNumber-26) {
-                return alphObj;
-          }})
-      return newLetter[0].letter;
-        }else {
-          
+            if (alphObj.number === newNumber - 26) {
+              return alphObj;
+            }
+          });
+          return newLetter[0].letter;
+        } else {
           const wrapAroundLetter = alphabet.filter((alphObj) => {
             if (alphObj.number === 26 + newNumber) {
               return alphObj;
@@ -76,38 +76,40 @@ const caesarModule = (function () {
           return wrapAroundLetter[0].letter;
         }
       }
-      return input.replace(onlyLetters,replacerDecodeFinder).toLowerCase()
+      return input.replace(onlyLetters, replacerDecodeFinder).toLowerCase();
     }
-  function replacerEncodeFinder(macth) {
-    const letterObj = alphabet.filter((alphObj) => {
-      if (alphObj.letter.toLowerCase() === macth.toLowerCase()) {
-        return alphObj;
-      }
-    });
-    const newNumber = letterObj[0].number + shift;
-    if (newNumber <= 26 && newNumber > 0) {
-      const newLetter = alphabet.filter((alphObj) => {
-        if (alphObj.number === newNumber) {
-          return alphObj;
-        }})
-      return newLetter[0].letter;
-    } else if (newNumber <= 0){
-      const newLetter = alphabet.filter((alphObj) => {
-            if (alphObj.number === 26 + newNumber) {
-                return alphObj;
-      }})
-      return newLetter[0].letter;
-    } else {
-      const wrapAroundLetter = alphabet.filter((alphObj) => {
-        if (alphObj.number === newNumber - 26) {
+    function replacerEncodeFinder(macth) {
+      const letterObj = alphabet.filter((alphObj) => {
+        if (alphObj.letter.toLowerCase() === macth.toLowerCase()) {
           return alphObj;
         }
       });
-      return wrapAroundLetter[0].letter;
+      const newNumber = letterObj[0].number + shift;
+      if (newNumber <= 26 && newNumber > 0) {
+        const newLetter = alphabet.filter((alphObj) => {
+          if (alphObj.number === newNumber) {
+            return alphObj;
+          }
+        });
+        return newLetter[0].letter;
+      } else if (newNumber <= 0) {
+        const newLetter = alphabet.filter((alphObj) => {
+          if (alphObj.number === 26 + newNumber) {
+            return alphObj;
+          }
+        });
+        return newLetter[0].letter;
+      } else {
+        const wrapAroundLetter = alphabet.filter((alphObj) => {
+          if (alphObj.number === newNumber - 26) {
+            return alphObj;
+          }
+        });
+        return wrapAroundLetter[0].letter;
+      }
     }
-  }
 
-  return input.replace(onlyLetters, replacerEncodeFinder).toLowerCase();
+    return input.replace(onlyLetters, replacerEncodeFinder).toLowerCase();
   }
 
   return {
