@@ -59,14 +59,14 @@ describe("caesar", () => {
       const expected = "** Ngqatg-Sgzgzg **";
       expect(expected.toLowerCase()).to.equal(actual.toLowerCase());
     });
-    /* it("If a letter is shifted so that it goes off the alphabet it should wrap around to the front of the alphabet ", ()=>{
+     it("If a letter is shifted so that it goes off the alphabet it should wrap around to the front of the alphabet ", ()=>{
         const shift = 12
         const input = "Hakuna-Matata"
         const encode = true
         const actual =   caesar(input,shift,encode)
         const expected = "Tmwgzm-Ymfmfm"
         expect(expected.toLowerCase()).to.equal(actual.toLowerCase())
-       })*/
+       })
     it("decode when encode param is false", () => {
       const shift = 12;
       const input = "Tmwgzm-Ymfmfm";
