@@ -73,7 +73,7 @@ const substitutionModule = (function () {
 
       if (!correctLetterObj) {
         const nonPresentChar = macth;
-        console.log("why");
+       
         return nonPresentChar;
       }
       const encodedLetter = correctLetterObj.subChar;
