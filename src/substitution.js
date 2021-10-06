@@ -50,13 +50,13 @@ const substitutionModule = (function () {
       letterObj.subChar = subAlphChar;
     }
     if (encode === false || !encode) {
-      function decoder(macth) {
+      function decoder(match) {
         const correctLetterObj = alphabetObjsArr.find((letterObj) =>
-          letterObj.subChar.toLowerCase() === macth ? true : false
+          letterObj.subChar.toLowerCase() === match ? true : false
         );
 
         if (!correctLetterObj) {
-          const nonPresentChar = macth;
+          const nonPresentChar = match;
           return nonPresentChar;
         }
         const decodedLetter = correctLetterObj.letter;
@@ -66,13 +66,13 @@ const substitutionModule = (function () {
       return input.replace(/[^\s]/g, decoder).toLowerCase();
     }
 
-    function encoder(macth) {
+    function encoder(match) {
       const correctLetterObj = alphabetObjsArr.find((letterObj) =>
-        letterObj.letter.toLowerCase() === macth.toLowerCase() ? true : false
+        letterObj.letter.toLowerCase() === match.toLowerCase() ? true : false
       );
 
       if (!correctLetterObj) {
-        const nonPresentChar = macth;
+        const nonPresentChar = match;
        
         return nonPresentChar;
       }

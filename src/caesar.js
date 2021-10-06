@@ -38,7 +38,7 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     const onlyLetters = /[A-Za-z]/gi;
-    
+
     //filter out bad shift values
     if (!shift || shift === 0 || shift < -25 || shift > 25) {
       return false;
@@ -78,9 +78,9 @@ const caesarModule = (function () {
       }
       return input.replace(onlyLetters, replacerDecodeFinder).toLowerCase();
     }
-    function replacerEncodeFinder(macth) {
+    function replacerEncodeFinder(match) {
       const letterObj = alphabet.filter((alphObj) => {
-        if (alphObj.letter.toLowerCase() === macth.toLowerCase()) {
+        if (alphObj.letter.toLowerCase() === match.toLowerCase()) {
           return alphObj;
         }
       });
