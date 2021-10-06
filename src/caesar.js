@@ -38,7 +38,7 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     const onlyLetters = /[A-Za-z]/gi;
-
+    
     //filter out bad shift values
     if (!shift || shift === 0 || shift < -25 || shift > 25) {
       return false;

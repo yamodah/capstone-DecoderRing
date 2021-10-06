@@ -46,7 +46,7 @@ const substitutionModule = (function () {
 
     for (let i = 0; i < 26; i++) {
       const letterObj = alphabetObjsArr[i];
-      const subAlphChar = alphabet.charAt(i);
+      const subAlphChar = alphabet[i];
       letterObj.subChar = subAlphChar;
     }
     if (encode === false || !encode) {
