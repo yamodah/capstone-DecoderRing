@@ -37,7 +37,6 @@ const substitutionModule = (function () {
     if (!alphabet) {
       return false;
     }
-    const regexForNonletters = /[^A-Z]/gi;
     const alphArr = alphabet.split("");
     const uniqueAlphbetArr = [...new Set(alphArr)];
     if (uniqueAlphbetArr.length < alphabet.length || alphabet.length !== 26) {
